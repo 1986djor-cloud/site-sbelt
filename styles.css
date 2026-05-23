@@ -92,8 +92,30 @@ a {
 }
 
 .brand strong {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 1.2rem;
+}
+
+.sbelt-word {
+  display: inline-block;
+  font-family: Didot, "Bodoni 72", "Bodoni MT", "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  transform: translateX(0.08em);
+}
+
+.beauty-word {
+  display: inline-block;
+  font-family: Didot, "Bodoni 72", "Bodoni MT", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: lowercase;
+  transform: translateX(0.1em);
+}
+
+.brand .sbelt-word {
+  letter-spacing: 0.12em;
 }
 
 .brand small {
@@ -122,12 +144,36 @@ a {
   border-radius: 999px;
   font-weight: 700;
   text-decoration: none;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, opacity 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
 .nav-cta {
   padding: 0 18px;
   color: var(--white);
   background: var(--espresso);
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible,
+.button:hover,
+.button:focus-visible,
+.intent-grid a:hover,
+.intent-grid a:focus-visible,
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(24, 21, 20, 0.16);
+}
+
+.nav-cta:focus-visible,
+.button:focus-visible,
+.intent-grid a:focus-visible,
+.floating-whatsapp:focus-visible,
+.menu-button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid rgba(124, 63, 69, 0.45);
+  outline-offset: 4px;
 }
 
 .menu-button {
@@ -138,6 +184,12 @@ a {
   border: 1px solid var(--line);
   border-radius: 50%;
   background: var(--white);
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.menu-button:hover {
+  border-color: rgba(124, 63, 69, 0.28);
+  transform: translateY(-1px);
 }
 
 .menu-button span {
@@ -230,6 +282,12 @@ p {
   background: var(--white);
 }
 
+.button.secondary:hover,
+.button.secondary:focus-visible {
+  border-color: rgba(124, 63, 69, 0.28);
+  background: rgba(255, 253, 249, 0.84);
+}
+
 .proof-strip {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -318,6 +376,19 @@ section {
   font-size: 1.05rem;
 }
 
+.book-button {
+  width: fit-content;
+  margin-top: 10px;
+  padding: 0 22px;
+  color: var(--white);
+  background: var(--moss);
+}
+
+.book-button:hover,
+.book-button:focus-visible {
+  background: #4f5b47;
+}
+
 .book-panel {
   display: grid;
   align-content: end;
@@ -326,7 +397,7 @@ section {
   color: var(--white);
   background:
     linear-gradient(rgba(24, 21, 20, 0.4), rgba(24, 21, 20, 0.72)),
-    url("assets/images/consultorio-square.jpg") center/cover;
+    url("assets/images/livro-longevidade-estetica.png") center/cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
@@ -371,12 +442,28 @@ section {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: 0 18px 44px rgba(24, 21, 20, 0.07);
+  transition: border-color 200ms ease, box-shadow 200ms ease, opacity 200ms ease, transform 200ms ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  opacity: 0.96;
+  transform: translateY(-4px);
+  border-color: rgba(124, 63, 69, 0.22);
+  box-shadow: 0 26px 58px rgba(24, 21, 20, 0.12);
 }
 
 .service-card img {
   width: 100%;
   aspect-ratio: 1.22;
   object-fit: cover;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.service-card:hover img,
+.service-card:focus-within img {
+  opacity: 0.88;
+  transform: scale(1.025);
 }
 
 .service-card div {
@@ -453,6 +540,7 @@ section {
 .steps strong,
 .steps span {
   display: block;
+  grid-column: 2;
 }
 
 .steps span {
@@ -496,13 +584,18 @@ section {
   text-align: center;
 }
 
+.intent-grid a:hover,
+.intent-grid a:focus-visible {
+  background: rgba(255, 253, 249, 0.9);
+}
+
 .clinic {
   padding-top: 0;
 }
 
 .clinic-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.75fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   max-width: var(--max);
   margin: 0 auto;
@@ -510,13 +603,16 @@ section {
 
 .clinic-grid img {
   width: 100%;
-  height: 520px;
+  height: clamp(420px, 54vw, 680px);
   object-fit: cover;
   border-radius: var(--radius);
+  transition: opacity 220ms ease, transform 220ms ease, filter 220ms ease;
 }
 
-.clinic-grid img:first-child {
-  object-position: center 44%;
+.clinic-grid img:hover {
+  opacity: 0.92;
+  transform: translateY(-3px);
+  filter: saturate(0.96);
 }
 
 .faq {
@@ -531,6 +627,13 @@ section {
 
 details {
   border-bottom: 1px solid var(--line);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+details:hover,
+details[open] {
+  background: rgba(201, 184, 170, 0.12);
+  border-color: rgba(124, 63, 69, 0.18);
 }
 
 summary {
@@ -539,6 +642,12 @@ summary {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.35rem;
   list-style: none;
+  transition: color 180ms ease, padding-left 180ms ease;
+}
+
+summary:hover {
+  color: var(--rose);
+  padding-left: 8px;
 }
 
 summary::-webkit-details-marker {
@@ -551,9 +660,218 @@ details p {
   color: var(--muted);
 }
 
+.instagram-section {
+  background: var(--paper);
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.instagram-card {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 18px 44px rgba(24, 21, 20, 0.07);
+  text-decoration: none;
+  transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.instagram-card:hover,
+.instagram-card:focus-visible {
+  opacity: 0.94;
+  transform: translateY(-4px);
+  border-color: rgba(124, 63, 69, 0.22);
+  box-shadow: 0 26px 58px rgba(24, 21, 20, 0.12);
+  outline: none;
+}
+
+.instagram-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.instagram-card:hover img,
+.instagram-card:focus-visible img {
+  transform: scale(1.035);
+  filter: saturate(0.96);
+}
+
+.instagram-card span {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 8px 12px;
+  color: var(--white);
+  background: rgba(24, 21, 20, 0.62);
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.video-section {
+  background: var(--white);
+}
+
+.video-frame {
+  max-width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.reviews-section {
+  background: var(--paper);
+}
+
+.reviews-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: end;
+  max-width: var(--max);
+  margin: 0 auto 42px;
+}
+
+.reviews-heading h2 {
+  max-width: 760px;
+}
+
+.reviews-heading p:last-child {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.rating-badge {
+  min-width: 210px;
+  padding: 22px 24px;
+  color: var(--white);
+  background: var(--espresso);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 44px rgba(24, 21, 20, 0.14);
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.rating-badge:hover,
+.rating-badge:focus-visible {
+  opacity: 0.92;
+  transform: translateY(-3px);
+  box-shadow: 0 26px 58px rgba(24, 21, 20, 0.18);
+}
+
+.rating-badge span,
+.review-stars {
+  display: block;
+  color: #d7a84c;
+  letter-spacing: 0.08em;
+}
+
+.rating-badge strong {
+  display: block;
+  margin-top: 4px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.7rem;
+  line-height: 1;
+}
+
+.rating-badge small {
+  color: rgba(255, 253, 249, 0.74);
+  font-weight: 800;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.review-card {
+  display: grid;
+  align-content: start;
+  min-height: 360px;
+  padding: 24px;
+  color: inherit;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 44px rgba(24, 21, 20, 0.07);
+  text-decoration: none;
+  transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.review-card:hover,
+.review-card:focus-visible {
+  opacity: 0.96;
+  transform: translateY(-4px);
+  border-color: rgba(124, 63, 69, 0.22);
+  box-shadow: 0 26px 58px rgba(24, 21, 20, 0.12);
+}
+
+.review-card p {
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.review-card > span {
+  display: block;
+  margin-top: 22px;
+  color: var(--rose);
+  font-weight: 800;
+}
+
+.review-author {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.review-author img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-author strong,
+.review-author small {
+  display: block;
+}
+
+.review-author small {
+  color: var(--muted);
+}
+
 .site-footer {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto minmax(260px, 380px) auto;
   gap: 28px;
   align-items: center;
   padding: 36px clamp(20px, 5vw, 54px) 104px;
@@ -576,6 +894,34 @@ details p {
 address {
   color: rgba(255, 253, 249, 0.72);
   font-style: normal;
+}
+
+address a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 180ms ease, opacity 180ms ease;
+}
+
+address a:hover,
+address a:focus-visible {
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.footer-map {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(255, 253, 249, 0.14);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 249, 0.06);
+}
+
+.footer-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .site-footer nav {
@@ -601,7 +947,23 @@ address {
   border-radius: var(--radius);
   box-shadow: 0 18px 42px rgba(24, 21, 20, 0.28);
   text-decoration: none;
-  transition: opacity 180ms ease, transform 180ms ease;
+  transition: background-color 180ms ease, opacity 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible {
+  background: #4f5b47;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 .floating-whatsapp span {
@@ -668,6 +1030,20 @@ address {
 
   .clinic-grid {
     grid-template-columns: 1fr;
+  }
+
+  .instagram-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-heading,
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rating-badge {
+    width: 100%;
+    min-width: 0;
   }
 
   .clinic-grid img {
